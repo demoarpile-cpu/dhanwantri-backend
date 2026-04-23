@@ -1,0 +1,370 @@
+{
+  "totalUsers": 73,
+  "users": [
+    {
+      "id": 40,
+      "email": "superadmin@ev.com",
+      "role": "SUPER_ADMIN"
+    },
+    {
+      "id": 41,
+      "email": "admin@ev-clinic.com",
+      "role": "ADMIN"
+    },
+    {
+      "id": 53,
+      "email": "proclinic@gmail.com",
+      "role": "ADMIN"
+    },
+    {
+      "id": 60,
+      "email": "avinash@gmail.com",
+      "role": "DOCTOR"
+    },
+    {
+      "id": 61,
+      "email": "sonu@gmail.com",
+      "role": "RECEPTIONIST"
+    },
+    {
+      "id": 62,
+      "email": "rohan@gmail.com",
+      "role": "PHARMACY"
+    },
+    {
+      "id": 63,
+      "email": "harshu@gmail.com",
+      "role": "LAB"
+    },
+    {
+      "id": 64,
+      "email": "shivam@gmail.com",
+      "role": "RADIOLOGY"
+    },
+    {
+      "id": 65,
+      "email": "sakshi@gmail.com",
+      "role": "ACCOUNTANT"
+    },
+    {
+      "id": 66,
+      "email": "kunal@gmail.com",
+      "role": "DOCUMENT_CONTROLLER"
+    },
+    {
+      "id": 67,
+      "email": "cult@gmail.com",
+      "role": "PATIENT"
+    },
+    {
+      "id": 68,
+      "email": "anmol@gmail.com",
+      "role": "DOCTOR"
+    },
+    {
+      "id": 69,
+      "email": "aman@gmail.com",
+      "role": "PATIENT"
+    },
+    {
+      "id": 70,
+      "email": "anmool@gmail.com",
+      "role": "DOCTOR"
+    },
+    {
+      "id": 71,
+      "email": "prashant@gmail.com",
+      "role": "PATIENT"
+    },
+    {
+      "id": 72,
+      "email": "kam@gmail.com",
+      "role": "PATIENT"
+    },
+    {
+      "id": 73,
+      "email": "sharma@gmail.com",
+      "role": "PATIENT"
+    },
+    {
+      "id": 74,
+      "email": "parmer@gmail.com",
+      "role": "PATIENT"
+    },
+    {
+      "id": 75,
+      "email": "bindu@gmail.com",
+      "role": "PATIENT"
+    },
+    {
+      "id": 76,
+      "email": "patidar@gmail.com",
+      "role": "ADMIN"
+    },
+    {
+      "id": 77,
+      "email": "umesh@gmail.com",
+      "role": "ADMIN"
+    },
+    {
+      "id": 78,
+      "email": "za@gmail.com",
+      "role": "ADMIN"
+    },
+    {
+      "id": 79,
+      "email": "pawar@gmail.com",
+      "role": "ADMIN"
+    },
+    {
+      "id": 80,
+      "email": "ukal@gmail.com",
+      "role": "PHARMACY"
+    },
+    {
+      "id": 81,
+      "email": "akal@gmail.com",
+      "role": "PATIENT"
+    },
+    {
+      "id": 82,
+      "email": "ramu@gmail.com",
+      "role": "PATIENT"
+    },
+    {
+      "id": 83,
+      "email": "amolpat@gmail.com",
+      "role": "PATIENT"
+    },
+    {
+      "id": 84,
+      "email": "bablu@gmail.com",
+      "role": "PATIENT"
+    },
+    {
+      "id": 85,
+      "email": "kamal@gmail.com",
+      "role": "PATIENT"
+    },
+    {
+      "id": 86,
+      "email": "kamla@gmail.com",
+      "role": "RECEPTIONIST"
+    },
+    {
+      "id": 87,
+      "email": "bhide@gmail.com",
+      "role": "PATIENT"
+    },
+    {
+      "id": 88,
+      "email": "tapu@gmail.com",
+      "role": "PATIENT"
+    },
+    {
+      "id": 89,
+      "email": "sonia@gmail.com",
+      "role": "PATIENT"
+    },
+    {
+      "id": 90,
+      "email": "golu@gmail.com",
+      "role": "PATIENT"
+    },
+    {
+      "id": 91,
+      "email": "gogi@gmail.com",
+      "role": "PATIENT"
+    },
+    {
+      "id": 92,
+      "email": "jamal@gmail.com",
+      "role": "PATIENT"
+    },
+    {
+      "id": 93,
+      "email": "salman@gmail.com",
+      "role": "PATIENT"
+    },
+    {
+      "id": 94,
+      "email": "kumar@gmail.com",
+      "role": "PATIENT"
+    },
+    {
+      "id": 95,
+      "email": "shukla@gmail.com",
+      "role": "ADMIN"
+    },
+    {
+      "id": 96,
+      "email": "verma@gmail.com",
+      "role": "RECEPTIONIST"
+    },
+    {
+      "id": 97,
+      "email": "guna@gmail.com",
+      "role": "DOCTOR"
+    },
+    {
+      "id": 98,
+      "email": "ram@gmail.com",
+      "role": "PATIENT"
+    },
+    {
+      "id": 99,
+      "email": "rama@gmail.com",
+      "role": "PATIENT"
+    },
+    {
+      "id": 100,
+      "email": "mik2@gmail.com",
+      "role": "ADMIN"
+    },
+    {
+      "id": 101,
+      "email": "aza@hmail.com",
+      "role": "ADMIN"
+    },
+    {
+      "id": 102,
+      "email": "qq@gmail.com",
+      "role": "ADMIN"
+    },
+    {
+      "id": 103,
+      "email": "fast@gmail.com",
+      "role": "ADMIN"
+    },
+    {
+      "id": 104,
+      "email": "amulgour0@gmail.com",
+      "role": "ADMIN"
+    },
+    {
+      "id": 105,
+      "email": "admin@property.com",
+      "role": "ADMIN"
+    },
+    {
+      "id": 106,
+      "email": "asa@gail.com",
+      "role": "ADMIN"
+    },
+    {
+      "id": 107,
+      "email": "qw@gmail.com",
+      "role": "ADMIN"
+    },
+    {
+      "id": 108,
+      "email": "kousal@gmail.com",
+      "role": "ADMIN"
+    },
+    {
+      "id": 109,
+      "email": "bike@gmail.com",
+      "role": "ADMIN"
+    },
+    {
+      "id": 110,
+      "email": "mukal@gmail.com",
+      "role": "PATIENT"
+    },
+    {
+      "id": 111,
+      "email": "mokosh@gmail.com",
+      "role": "ADMIN"
+    },
+    {
+      "id": 112,
+      "email": "avv@gmail.com",
+      "role": "PATIENT"
+    },
+    {
+      "id": 113,
+      "email": "aa@gmail.com",
+      "role": "PATIENT"
+    },
+    {
+      "id": 114,
+      "email": "shar@gmail.com",
+      "role": "PATIENT"
+    },
+    {
+      "id": 115,
+      "email": "akash@gamil.com",
+      "role": "ADMIN"
+    },
+    {
+      "id": 116,
+      "email": "mohan@gmail.com",
+      "role": "ADMIN"
+    },
+    {
+      "id": 117,
+      "email": "deep@gmail.com",
+      "role": "PATIENT"
+    },
+    {
+      "id": 118,
+      "email": "diya@gmail.com",
+      "role": "DOCTOR"
+    },
+    {
+      "id": 119,
+      "email": "alex@gmail.com",
+      "role": "PATIENT"
+    },
+    {
+      "id": 120,
+      "email": "qwertyy@gmail.com",
+      "role": "PATIENT"
+    },
+    {
+      "id": 121,
+      "email": "snax@gmail.com",
+      "role": "PATIENT"
+    },
+    {
+      "id": 122,
+      "email": "akshay@gmail.com",
+      "role": "PATIENT"
+    },
+    {
+      "id": 123,
+      "email": "armani@gmail.com",
+      "role": "PATIENT"
+    },
+    {
+      "id": 124,
+      "email": "parebola@gmail.com",
+      "role": "ADMIN"
+    },
+    {
+      "id": 125,
+      "email": "raj@gmail.com",
+      "role": "PATIENT"
+    },
+    {
+      "id": 126,
+      "email": "rohit@gmail.com",
+      "role": "PATIENT"
+    },
+    {
+      "id": 127,
+      "email": "visha@gmail.com",
+      "role": "ADMIN"
+    },
+    {
+      "id": 128,
+      "email": "ankit@fit.com",
+      "role": "ADMIN"
+    },
+    {
+      "id": 129,
+      "email": "asa@gmail.com",
+      "role": "ADMIN"
+    }
+  ]
+}

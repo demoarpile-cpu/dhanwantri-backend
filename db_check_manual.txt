@@ -1,0 +1,114 @@
+---USERS_START---
+[
+  {
+    "id": 40,
+    "email": "superadmin@ev.com",
+    "role": "SUPER_ADMIN"
+  },
+  {
+    "id": 41,
+    "email": "admin@ev-clinic.com",
+    "role": "ADMIN"
+  },
+  {
+    "id": 53,
+    "email": "proclinic@gmail.com",
+    "role": "ADMIN"
+  },
+  {
+    "id": 60,
+    "email": "avinash@gmail.com",
+    "role": "DOCTOR"
+  },
+  {
+    "id": 61,
+    "email": "sonu@gmail.com",
+    "role": "RECEPTIONIST"
+  },
+  {
+    "id": 62,
+    "email": "rohan@gmail.com",
+    "role": "PHARMACY"
+  },
+  {
+    "id": 63,
+    "email": "harshu@gmail.com",
+    "role": "LAB"
+  },
+  {
+    "id": 64,
+    "email": "shivam@gmail.com",
+    "role": "RADIOLOGY"
+  },
+  {
+    "id": 65,
+    "email": "sakshi@gmail.com",
+    "role": "ACCOUNTANT"
+  },
+  {
+    "id": 66,
+    "email": "kunal@gmail.com",
+    "role": "DOCUMENT_CONTROLLER"
+  },
+  {
+    "id": 67,
+    "email": "cult@gmail.com",
+    "role": "PATIENT"
+  },
+  {
+    "id": 68,
+    "email": "anmol@gmail.com",
+    "role": "DOCTOR"
+  }
+]
+---USERS_END---
+---CLINICS_START---
+[
+  {
+    "id": 10,
+    "name": "Husri Clinic",
+    "subdomain": "husri",
+    "location": "Medical District, Dubai",
+    "contact": "+971 4 000 0000",
+    "email": "info@husri.online",
+    "logo": null,
+    "brandingColor": "#2D3BAE",
+    "status": "active",
+    "modules": "{\"pharmacy\":true,\"radiology\":true,\"laboratory\":true,\"billing\":true,\"reports\":true}",
+    "createdDate": "2026-02-14T12:14:34.702Z",
+    "updatedAt": "2026-02-14T12:14:34.702Z",
+    "bookingConfig": null,
+    "currency": "USD",
+    "lastTokenDate": "2026-02-14T12:14:34.702Z",
+    "lastTokenNumber": 0,
+    "isActive": true,
+    "subscriptionEnd": "2027-02-12T08:49:12.699Z",
+    "subscriptionPlan": "Yearly",
+    "subscriptionStart": "2026-02-12T08:49:12.699Z",
+    "userLimit": 5
+  },
+  {
+    "id": 13,
+    "name": "proclinic",
+    "subdomain": "proclinic",
+    "location": "indore",
+    "contact": "07805059522",
+    "email": "proclinic@gmail.com",
+    "logo": null,
+    "brandingColor": "#2D3BAE",
+    "status": "active",
+    "modules": "{\"pharmacy\":true,\"radiology\":true,\"laboratory\":true,\"billing\":true}",
+    "createdDate": "2026-02-14T12:14:34.727Z",
+    "updatedAt": "2026-02-14T12:14:34.727Z",
+    "bookingConfig": null,
+    "currency": "USD",
+    "lastTokenDate": "2026-02-14T12:14:34.727Z",
+    "lastTokenNumber": 0,
+    "isActive": true,
+    "subscriptionEnd": "2026-02-19T12:32:10.772Z",
+    "subscriptionPlan": "Trial",
+    "subscriptionStart": "2026-02-12T12:32:10.772Z",
+    "userLimit": 5
+  }
+]
+---CLINICS_END---

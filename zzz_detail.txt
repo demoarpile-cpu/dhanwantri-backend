@@ -1,0 +1,23 @@
+{
+  "id": 25,
+  "name": "zzz",
+  "subdomain": "zzz",
+  "location": "sudhma nagar indore",
+  "contact": "07805059521",
+  "email": "amulgour0@gmail.com",
+  "logo": "/uploads/logos/logo-1771477940214-895132776.jpg",
+  "brandingColor": "#2D3BAE",
+  "status": "active",
+  "modules": "{\"pharmacy\":true,\"radiology\":true,\"laboratory\":true,\"billing\":true}",
+  "createdDate": "2026-02-19T05:12:20.905Z",
+  "updatedAt": "2026-02-19T05:12:20.905Z",
+  "bookingConfig": null,
+  "currency": "USD",
+  "lastTokenDate": "2026-02-19T05:12:20.905Z",
+  "lastTokenNumber": 0,
+  "isActive": true,
+  "subscriptionEnd": "2026-02-26T05:12:20.228Z",
+  "subscriptionPlan": "Trial",
+  "subscriptionStart": "2026-02-19T05:12:20.228Z",
+  "userLimit": 5
+}

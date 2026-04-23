@@ -1,0 +1,6 @@
+--- MIGRATION START ---
+Environment: DB URL SET
+Starting migration from RX- to PH-...
+All Invoice IDs: CONS-1149-2342, CONS-1516-2850, CONS-6325-7476, CONS-7619-1813, CONS-8969-4775, CONS-8988-9510, CONS-9735-1714, PH-6541-7645, PH-6807-2328
+Found 0 invoices to migrate.
+Migration completed successfully.

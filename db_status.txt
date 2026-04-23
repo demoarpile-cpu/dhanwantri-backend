@@ -1,0 +1,2 @@
+User count: 13
+Users: [{"email":"accountant@ev-clinic.com"},{"email":"admin@ev-clinic.com"},{"email":"aisha@example.com"},{"email":"docs@ev-clinic.com"},{"email":"doctor@ev-clinic.com"},{"email":"doctor@ghannam.com"},{"email":"doctor@husri.com"},{"email":"doctor@skaf.com"},{"email":"lab@ev-clinic.com"},{"email":"pharma@ev-clinic.com"},{"email":"radio@ev-clinic.com"},{"email":"reception@ev-clinic.com"},{"email":"superadmin@ev.com"}]

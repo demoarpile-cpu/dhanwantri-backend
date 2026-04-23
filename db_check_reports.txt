@@ -1,0 +1,2 @@
+Total Invoices: 30
+Pharmacy Invoices: 6

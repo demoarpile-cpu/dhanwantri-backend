@@ -1,0 +1,11 @@
+[dotenv@17.2.3] injecting env (7) from .env -- tip: 🔐 prevent building .env in docker: https://dotenvx.com/prebuild
+🔌 Connecting to Database URL: mysql://root:@localhost:3306/ev_clinic_db
+
+🚀 EV Clinic HIS Backend (Restarted)
+--------------------------------
+Status : RUNNING
+Port   : 5000
+Env    : development
+Started: Tue Feb 24 2026 11:26:23 GMT+0530 (India Standard Time)
+--------------------------------
+

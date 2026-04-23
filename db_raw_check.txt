@@ -1,0 +1,152 @@
+---DESCRIBE_START---
+[
+  {
+    "Field": "id",
+    "Type": "int(11)",
+    "Null": "NO",
+    "Key": "PRI",
+    "Default": null,
+    "Extra": "auto_increment"
+  },
+  {
+    "Field": "userId",
+    "Type": "int(11)",
+    "Null": "NO",
+    "Key": "MUL",
+    "Default": null,
+    "Extra": ""
+  },
+  {
+    "Field": "clinicId",
+    "Type": "int(11)",
+    "Null": "NO",
+    "Key": "MUL",
+    "Default": null,
+    "Extra": ""
+  },
+  {
+    "Field": "role",
+    "Type": "enum('SUPER_ADMIN','ADMIN','DOCTOR','RECEPTIONIST','PHARMACY','LAB','RADIOLOGY','ACCOUNTANT','PATIENT','DOCUMENT_CONTROLLER')",
+    "Null": "NO",
+    "Key": "",
+    "Default": "RECEPTIONIST",
+    "Extra": ""
+  },
+  {
+    "Field": "createdAt",
+    "Type": "datetime(3)",
+    "Null": "NO",
+    "Key": "",
+    "Default": "current_timestamp(3)",
+    "Extra": ""
+  },
+  {
+    "Field": "department",
+    "Type": "varchar(191)",
+    "Null": "YES",
+    "Key": "",
+    "Default": null,
+    "Extra": ""
+  },
+  {
+    "Field": "specialty",
+    "Type": "varchar(191)",
+    "Null": "YES",
+    "Key": "",
+    "Default": null,
+    "Extra": ""
+  },
+  {
+    "Field": "roles",
+    "Type": "longtext",
+    "Null": "YES",
+    "Key": "",
+    "Default": null,
+    "Extra": ""
+  }
+]
+---DESCRIBE_END---
+---DATA_START---
+[
+  {
+    "id": 1,
+    "userId": 53,
+    "clinicId": 13,
+    "role": "ADMIN",
+    "createdAt": "2026-02-14T12:11:51.001Z",
+    "department": "Administration",
+    "specialty": null,
+    "roles": null
+  },
+  {
+    "id": 2,
+    "userId": 60,
+    "clinicId": 13,
+    "role": "DOCTOR",
+    "createdAt": "2026-02-14T12:11:51.008Z",
+    "department": "Clinical",
+    "specialty": null,
+    "roles": null
+  },
+  {
+    "id": 3,
+    "userId": 61,
+    "clinicId": 13,
+    "role": "RECEPTIONIST",
+    "createdAt": "2026-02-14T12:11:51.012Z",
+    "department": "Front Desk",
+    "specialty": null,
+    "roles": null
+  },
+  {
+    "id": 4,
+    "userId": 62,
+    "clinicId": 13,
+    "role": "PHARMACY",
+    "createdAt": "2026-02-14T12:11:51.019Z",
+    "department": "Pharmacy",
+    "specialty": null,
+    "roles": null
+  },
+  {
+    "id": 5,
+    "userId": 63,
+    "clinicId": 13,
+    "role": "LAB",
+    "createdAt": "2026-02-14T12:11:51.023Z",
+    "department": "Laboratory",
+    "specialty": null,
+    "roles": null
+  },
+  {
+    "id": 6,
+    "userId": 64,
+    "clinicId": 13,
+    "role": "RADIOLOGY",
+    "createdAt": "2026-02-14T12:11:51.027Z",
+    "department": "Radiology",
+    "specialty": null,
+    "roles": null
+  },
+  {
+    "id": 7,
+    "userId": 65,
+    "clinicId": 13,
+    "role": "ACCOUNTANT",
+    "createdAt": "2026-02-14T12:11:51.031Z",
+    "department": "Finance",
+    "specialty": null,
+    "roles": null
+  },
+  {
+    "id": 8,
+    "userId": 66,
+    "clinicId": 13,
+    "role": "DOCUMENT_CONTROLLER",
+    "createdAt": "2026-02-14T12:11:51.035Z",
+    "department": "Administration",
+    "specialty": null,
+    "roles": null
+  }
+]
+---DATA_END---

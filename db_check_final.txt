@@ -1,0 +1,181 @@
+{
+  "users": [
+    {
+      "id": 40,
+      "email": "superadmin@ev.com",
+      "role": "SUPER_ADMIN"
+    },
+    {
+      "id": 41,
+      "email": "admin@ev-clinic.com",
+      "role": "ADMIN"
+    },
+    {
+      "id": 42,
+      "email": "doctor@husri.com",
+      "role": "DOCTOR"
+    },
+    {
+      "id": 43,
+      "email": "doctor@skaf.com",
+      "role": "DOCTOR"
+    },
+    {
+      "id": 44,
+      "email": "doctor@ghannam.com",
+      "role": "DOCTOR"
+    },
+    {
+      "id": 45,
+      "email": "doctor@ev-clinic.com",
+      "role": "DOCTOR"
+    },
+    {
+      "id": 46,
+      "email": "reception@ev-clinic.com",
+      "role": "RECEPTIONIST"
+    },
+    {
+      "id": 47,
+      "email": "pharma@ev-clinic.com",
+      "role": "PHARMACY"
+    },
+    {
+      "id": 48,
+      "email": "lab@ev-clinic.com",
+      "role": "LAB"
+    },
+    {
+      "id": 49,
+      "email": "radio@ev-clinic.com",
+      "role": "RADIOLOGY"
+    },
+    {
+      "id": 50,
+      "email": "accountant@ev-clinic.com",
+      "role": "ACCOUNTANT"
+    },
+    {
+      "id": 51,
+      "email": "docs@ev-clinic.com",
+      "role": "DOCUMENT_CONTROLLER"
+    },
+    {
+      "id": 52,
+      "email": "aisha@example.com",
+      "role": "PATIENT"
+    },
+    {
+      "id": 53,
+      "email": "proclinic@gmail.com",
+      "role": "ADMIN"
+    },
+    {
+      "id": 54,
+      "email": "avinash@gmail.com",
+      "role": "DOCTOR"
+    },
+    {
+      "id": 55,
+      "email": "sonu@gmail.com",
+      "role": "RECEPTIONIST"
+    },
+    {
+      "id": 56,
+      "email": "rohan@gmail.com",
+      "role": "RECEPTIONIST"
+    },
+    {
+      "id": 57,
+      "email": "harshu@gmail.com",
+      "role": "RECEPTIONIST"
+    },
+    {
+      "id": 58,
+      "email": "shivam@gmail.com",
+      "role": "RECEPTIONIST"
+    },
+    {
+      "id": 59,
+      "email": "sakshi@gmail.com",
+      "role": "ACCOUNTANT"
+    },
+    {
+      "id": 60,
+      "email": "kunal@gmail.com",
+      "role": "DOCUMENT_CONTROLLER"
+    }
+  ],
+  "staff": [
+    {
+      "userId": 41,
+      "clinicId": 10,
+      "role": "ADMIN"
+    },
+    {
+      "userId": 42,
+      "clinicId": 10,
+      "role": "DOCTOR"
+    },
+    {
+      "userId": 41,
+      "clinicId": 11,
+      "role": "ADMIN"
+    },
+    {
+      "userId": 43,
+      "clinicId": 11,
+      "role": "DOCTOR"
+    },
+    {
+      "userId": 41,
+      "clinicId": 12,
+      "role": "ADMIN"
+    },
+    {
+      "userId": 44,
+      "clinicId": 12,
+      "role": "DOCTOR"
+    },
+    {
+      "userId": 45,
+      "clinicId": 10,
+      "role": "DOCTOR"
+    },
+    {
+      "userId": 46,
+      "clinicId": 10,
+      "role": "RECEPTIONIST"
+    },
+    {
+      "userId": 47,
+      "clinicId": 10,
+      "role": "PHARMACY"
+    },
+    {
+      "userId": 48,
+      "clinicId": 10,
+      "role": "LAB"
+    },
+    {
+      "userId": 49,
+      "clinicId": 10,
+      "role": "RADIOLOGY"
+    },
+    {
+      "userId": 50,
+      "clinicId": 10,
+      "role": "ACCOUNTANT"
+    },
+    {
+      "userId": 51,
+      "clinicId": 10,
+      "role": "DOCUMENT_CONTROLLER"
+    },
+    {
+      "userId": 53,
+      "clinicId": 13,
+      "role": "ADMIN"
+    }
+  ]
+}

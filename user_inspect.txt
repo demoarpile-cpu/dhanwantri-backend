@@ -1,0 +1,67 @@
+[
+  {
+    "email": "superadmin@ev.com",
+    "password": "$2b$12$lwYS4Glaw7kpawEvuQChbuYoHX/XcwGg/vnrwF4OyhZule8IsMJTS",
+    "role": "SUPER_ADMIN"
+  },
+  {
+    "email": "admin@ev-clinic.com",
+    "password": "$2b$12$hdYRRaAaZzejh8od52Hda.g7o9W5CDYaxqO/3NgAqm.a0bnYbiC5.",
+    "role": "ADMIN"
+  },
+  {
+    "email": "doctor@husri.com",
+    "password": "$2b$12$lwYS4Glaw7kpawEvuQChbuYoHX/XcwGg/vnrwF4OyhZule8IsMJTS",
+    "role": "DOCTOR"
+  },
+  {
+    "email": "doctor@skaf.com",
+    "password": "$2b$12$lwYS4Glaw7kpawEvuQChbuYoHX/XcwGg/vnrwF4OyhZule8IsMJTS",
+    "role": "DOCTOR"
+  },
+  {
+    "email": "doctor@ghannam.com",
+    "password": "$2b$12$lwYS4Glaw7kpawEvuQChbuYoHX/XcwGg/vnrwF4OyhZule8IsMJTS",
+    "role": "DOCTOR"
+  },
+  {
+    "email": "doctor@ev-clinic.com",
+    "password": "$2b$12$lwYS4Glaw7kpawEvuQChbuYoHX/XcwGg/vnrwF4OyhZule8IsMJTS",
+    "role": "DOCTOR"
+  },
+  {
+    "email": "reception@ev-clinic.com",
+    "password": "$2b$12$lwYS4Glaw7kpawEvuQChbuYoHX/XcwGg/vnrwF4OyhZule8IsMJTS",
+    "role": "RECEPTIONIST"
+  },
+  {
+    "email": "pharma@ev-clinic.com",
+    "password": "$2b$12$lwYS4Glaw7kpawEvuQChbuYoHX/XcwGg/vnrwF4OyhZule8IsMJTS",
+    "role": "PHARMACY"
+  },
+  {
+    "email": "lab@ev-clinic.com",
+    "password": "$2b$12$lwYS4Glaw7kpawEvuQChbuYoHX/XcwGg/vnrwF4OyhZule8IsMJTS",
+    "role": "LAB"
+  },
+  {
+    "email": "radio@ev-clinic.com",
+    "password": "$2b$12$lwYS4Glaw7kpawEvuQChbuYoHX/XcwGg/vnrwF4OyhZule8IsMJTS",
+    "role": "RADIOLOGY"
+  },
+  {
+    "email": "accountant@ev-clinic.com",
+    "password": "$2b$12$lwYS4Glaw7kpawEvuQChbuYoHX/XcwGg/vnrwF4OyhZule8IsMJTS",
+    "role": "ACCOUNTANT"
+  },
+  {
+    "email": "docs@ev-clinic.com",
+    "password": "$2b$12$lwYS4Glaw7kpawEvuQChbuYoHX/XcwGg/vnrwF4OyhZule8IsMJTS",
+    "role": "DOCUMENT_CONTROLLER"
+  },
+  {
+    "email": "aisha@example.com",
+    "password": "$2b$12$lwYS4Glaw7kpawEvuQChbuYoHX/XcwGg/vnrwF4OyhZule8IsMJTS",
+    "role": "PATIENT"
+  }
+]

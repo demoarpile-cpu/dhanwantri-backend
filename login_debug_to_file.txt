@@ -1,0 +1,7 @@
+Starting login test...
+Calling authService.login...
+Catch block triggered. Error: Incorrect email or password
+Status: 401
+Stack: Error: Incorrect email or password
+    at login (D:\Desktop\ev - clinic\ev-clini-backend-12 (1)\src\services\auth.service.ts:36:15)
+    at async test (D:\Desktop\ev - clinic\ev-clini-backend-12 (1)\test_login_to_file.ts:13:24)

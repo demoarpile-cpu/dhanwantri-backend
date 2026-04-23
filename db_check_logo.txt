@@ -1,0 +1,32 @@
+[
+  {
+    "id": 25,
+    "name": "zzz",
+    "logo": "/uploads/logos/logo-1771477940214-895132776.jpg",
+    "createdDate": "2026-02-19T05:12:20.905Z"
+  },
+  {
+    "id": 22,
+    "name": "fast",
+    "logo": "/uploads/logos/logo-1771477333809-829245683.jpg",
+    "createdDate": "2026-02-19T05:02:14.488Z"
+  },
+  {
+    "id": 21,
+    "name": "qq",
+    "logo": "/uploads/logos/logo-1771412864002-931511224.jpg",
+    "createdDate": "2026-02-18T11:07:44.582Z"
+  },
+  {
+    "id": 20,
+    "name": "aza",
+    "logo": "/uploads/logos/logo-1771412805637-972854542.jpg",
+    "createdDate": "2026-02-18T11:06:46.262Z"
+  },
+  {
+    "id": 19,
+    "name": "aaa",
+    "logo": "/uploads/logos/logo-1771412499912-592469289.png",
+    "createdDate": "2026-02-18T10:54:43.479Z"
+  }
+]
