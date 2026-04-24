@@ -205,6 +205,19 @@ export const login = async (data: any, ip: string, device: string) => {
         };
     }
 
+    // Create OTP session (for UI flow). For now, verification accepts any 6-digit OTP.
+    const generatedOtp = String(Math.floor(100000 + Math.random() * 900000));
+    const otpExpiry = new Date(Date.now() + 10 * 60 * 1000);
+    await prisma.user.update({
+        where: { id: user.id },
+        data: { otp: generatedOtp, otpExpiry }
+    });
+    try {
+        await sendOTP(user.email, generatedOtp);
+    } catch (e) {
+        // Keep login flow resilient even if SMTP is not configured.
+    }
+
     // Attempt to fix potential invalid enum values for Super Admin or others
     try {
         await prisma.$executeRawUnsafe(`UPDATE clinicstaff SET role = 'RECEPTIONIST' WHERE role = '' OR role IS NULL`);
@@ -302,36 +315,6 @@ export const login = async (data: any, ip: string, device: string) => {
     const roles = Array.from(new Set(allRoles)).filter(r => r && r.length > 0);
 
     const isSuperAdmin = roles.includes('SUPER_ADMIN') || user.role === 'SUPER_ADMIN';
-
-    // Super Admin gets direct login without OTP.
-    if (isSuperAdmin) {
-        const superAdminUser = await prisma.user.findUnique({
-            where: { id: user.id },
-            include: { clinicstaff: true }
-        });
-        if (!superAdminUser) {
-            throw new AppError('User not found', 404);
-        }
-        const session = await buildAuthenticatedSession(superAdminUser, ip, device, 'Super Admin direct login');
-        return {
-            success: true,
-            otpRequired: false,
-            ...session
-        };
-    }
-
-    // Create OTP session (for UI flow). For now, verification accepts any 6-digit OTP.
-    const generatedOtp = String(Math.floor(100000 + Math.random() * 900000));
-    const otpExpiry = new Date(Date.now() + 10 * 60 * 1000);
-    await prisma.user.update({
-        where: { id: user.id },
-        data: { otp: generatedOtp, otpExpiry }
-    });
-    try {
-        await sendOTP(user.email, generatedOtp);
-    } catch (e) {
-        // Keep login flow resilient even if SMTP is not configured.
-    }
 
     // Determine the primary role for the token
     let tokenRole = user.role;
