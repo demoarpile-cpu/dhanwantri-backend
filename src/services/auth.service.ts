@@ -254,6 +254,18 @@ export const login = async (data: any, ip: string, device: string) => {
             targetClinicId = activeClinics[0].clinicId;
         }
 
+        const generatedOtp = String(Math.floor(100000 + Math.random() * 900000));
+        const otpExpiry = new Date(Date.now() + 10 * 60 * 1000);
+        await prisma.user.update({
+            where: { id: user.id },
+            data: { otp: generatedOtp, otpExpiry }
+        });
+        try {
+            await sendOTP(user.email, generatedOtp);
+        } catch (e) {
+            // Keep login flow resilient even if SMTP is not configured.
+        }
+
         return {
             success: true,
             otpRequired: true,
