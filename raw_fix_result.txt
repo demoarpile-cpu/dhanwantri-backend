@@ -1,2 +1,0 @@
-Fixed 4 rows in user table
-Fixed 0 rows in clinicstaff table
