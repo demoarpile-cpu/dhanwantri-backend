@@ -1,0 +1,197 @@
+Checking database roles...
+Users roles: [
+  {
+    "email": "superadmin@ev.com",
+    "role": "SUPER_ADMIN"
+  },
+  {
+    "email": "admin@ev-clinic.com",
+    "role": "ADMIN"
+  },
+  {
+    "email": "proclinic@gmail.com",
+    "role": "ADMIN"
+  },
+  {
+    "email": "avinash@gmail.com",
+    "role": "DOCTOR"
+  },
+  {
+    "email": "sonu@gmail.com",
+    "role": "RECEPTIONIST"
+  },
+  {
+    "email": "rohan@gmail.com",
+    "role": "PHARMACY"
+  },
+  {
+    "email": "harshu@gmail.com",
+    "role": "LAB"
+  },
+  {
+    "email": "shivam@gmail.com",
+    "role": "RADIOLOGY"
+  },
+  {
+    "email": "sakshi@gmail.com",
+    "role": "ACCOUNTANT"
+  },
+  {
+    "email": "kunal@gmail.com",
+    "role": "DOCUMENT_CONTROLLER"
+  },
+  {
+    "email": "cult@gmail.com",
+    "role": "PATIENT"
+  },
+  {
+    "email": "anmol@gmail.com",
+    "role": "DOCTOR"
+  },
+  {
+    "email": "aman@gmail.com",
+    "role": "PATIENT"
+  },
+  {
+    "email": "anmool@gmail.com",
+    "role": "DOCTOR"
+  },
+  {
+    "email": "prashant@gmail.com",
+    "role": "PATIENT"
+  },
+  {
+    "email": "kam@gmail.com",
+    "role": "PATIENT"
+  },
+  {
+    "email": "sharma@gmail.com",
+    "role": "PATIENT"
+  },
+  {
+    "email": "parmer@gmail.com",
+    "role": "PATIENT"
+  },
+  {
+    "email": "bindu@gmail.com",
+    "role": "PATIENT"
+  },
+  {
+    "email": "patidar@gmail.com",
+    "role": "ADMIN"
+  },
+  {
+    "email": "umesh@gmail.com",
+    "role": "ADMIN"
+  },
+  {
+    "email": "za@gmail.com",
+    "role": "ADMIN"
+  },
+  {
+    "email": "pawar@gmail.com",
+    "role": "ADMIN"
+  },
+  {
+    "email": "ukal@gmail.com",
+    "role": "PHARMACY"
+  },
+  {
+    "email": "akal@gmail.com",
+    "role": "PATIENT"
+  },
+  {
+    "email": "ramu@gmail.com",
+    "role": "PATIENT"
+  },
+  {
+    "email": "amolpat@gmail.com",
+    "role": "PATIENT"
+  },
+  {
+    "email": "bablu@gmail.com",
+    "role": "PATIENT"
+  },
+  {
+    "email": "kamal@gmail.com",
+    "role": "PATIENT"
+  },
+  {
+    "email": "kamla@gmail.com",
+    "role": "RECEPTIONIST"
+  },
+  {
+    "email": "bhide@gmail.com",
+    "role": "PATIENT"
+  },
+  {
+    "email": "tapu@gmail.com",
+    "role": "PATIENT"
+  }
+]
+Staff roles: [
+  {
+    "userId": 53,
+    "role": "ADMIN"
+  },
+  {
+    "userId": 60,
+    "role": "DOCTOR"
+  },
+  {
+    "userId": 61,
+    "role": "RECEPTIONIST"
+  },
+  {
+    "userId": 62,
+    "role": "PHARMACY"
+  },
+  {
+    "userId": 63,
+    "role": "LAB"
+  },
+  {
+    "userId": 64,
+    "role": "RADIOLOGY"
+  },
+  {
+    "userId": 65,
+    "role": "ACCOUNTANT"
+  },
+  {
+    "userId": 66,
+    "role": "DOCUMENT_CONTROLLER"
+  },
+  {
+    "userId": 68,
+    "role": "DOCTOR"
+  },
+  {
+    "userId": 70,
+    "role": "DOCTOR"
+  },
+  {
+    "userId": 76,
+    "role": "ADMIN"
+  },
+  {
+    "userId": 77,
+    "role": "ADMIN"
+  },
+  {
+    "userId": 78,
+    "role": "ADMIN"
+  },
+  {
+    "userId": 79,
+    "role": "ADMIN"
+  },
+  {
+    "userId": 80,
+    "role": "PHARMACY"
+  },
+  {
+    "userId": 86,
+    "role": "RECEPTIONIST"
+  }
+]

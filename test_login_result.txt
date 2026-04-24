@@ -1,0 +1,4 @@
+Testing login for sonu@gmail.com...
+Password match: true
+Staff records found: 1
+- Clinic: 13, Role: RECEPTIONIST
