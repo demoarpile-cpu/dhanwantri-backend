@@ -443,6 +443,12 @@ export const deleteClinic = async (id: number) => {
 
     // Delete all related records in a transaction
     await prisma.$transaction(async (tx) => {
+        const clinicStaff = await tx.clinicstaff.findMany({
+            where: { clinicId: id },
+            select: { id: true, userId: true }
+        });
+        const staffIds = clinicStaff.map((s) => s.id);
+
         // Unlink existing audit logs to prevent foreign key errors
         await tx.auditlog.updateMany({
             where: { clinicId: id },
@@ -461,7 +467,36 @@ export const deleteClinic = async (id: number) => {
 
         // Delete records that depend on other clinic-related records first
         await tx.formresponse.deleteMany({ where: { clinicId: id } });
-        await tx.appointment.deleteMany({ where: { clinicId: id } });
+
+        // Break doctor/staff foreign key references before removing clinicstaff
+        if (staffIds.length > 0) {
+            await tx.invoice.updateMany({
+                where: { doctorId: { in: staffIds } },
+                data: { doctorId: null }
+            });
+
+            await tx.staff_document.deleteMany({
+                where: {
+                    OR: [
+                        { clinicId: id },
+                        { staffId: { in: staffIds } }
+                    ]
+                }
+            });
+        } else {
+            await tx.staff_document.deleteMany({ where: { clinicId: id } });
+        }
+
+        await tx.appointment.deleteMany({
+            where: staffIds.length > 0
+                ? {
+                    OR: [
+                        { clinicId: id },
+                        { doctorId: { in: staffIds } }
+                    ]
+                }
+                : { clinicId: id }
+        });
         await tx.invoice.deleteMany({ where: { clinicId: id } });
         await tx.medicalrecord.deleteMany({ where: { clinicId: id } });
         await tx.service_order.deleteMany({ where: { clinicId: id } });
@@ -704,7 +739,20 @@ export const updateStaff = async (id: number, data: any) => {
 };
 
 export const deleteStaff = async (id: number) => {
-    await prisma.clinicstaff.delete({ where: { id } });
+    await prisma.$transaction(async (tx) => {
+        await tx.invoice.updateMany({
+            where: { doctorId: id },
+            data: { doctorId: null }
+        });
+        await tx.appointment.deleteMany({
+            where: { doctorId: id }
+        });
+        await tx.staff_document.deleteMany({
+            where: { staffId: id }
+        });
+
+        await tx.clinicstaff.delete({ where: { id } });
+    });
 
     await prisma.auditlog.create({
         data: {
