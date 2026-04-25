@@ -10,7 +10,6 @@ if (!isRailway) {
 }
 
 import express, { Request, Response, NextFunction } from 'express';
-import cors from 'cors';
 import helmet from 'helmet';
 import compression from 'compression';
 import morgan from 'morgan';
@@ -72,24 +71,28 @@ app.use(compression());
 
 
 
-const corsOptions: cors.CorsOptions = {
-  // Reflect request origin to avoid browser-side CORS blocks across
-  // localhost, softwaredemolive and railway domains.
-  origin: true,
-  credentials: true,
-  methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
-  allowedHeaders: [
-    "Content-Type",
-    "Authorization",
-    "X-Requested-With",
-    "x-clinic-id",
-    "Accept",
-    "X-Auth-Token"
-  ],
-  exposedHeaders: ["set-cookie", "Authorization"]
-};
+// Explicit CORS handling to avoid runtime/version-specific middleware issues.
+app.use((req, res, next) => {
+  const origin = req.headers.origin;
+  if (origin) {
+    res.header('Access-Control-Allow-Origin', origin);
+    res.header('Vary', 'Origin');
+  } else {
+    res.header('Access-Control-Allow-Origin', '*');
+  }
+  res.header('Access-Control-Allow-Credentials', 'true');
+  res.header('Access-Control-Allow-Methods', 'GET,POST,PUT,PATCH,DELETE,OPTIONS');
+  res.header(
+    'Access-Control-Allow-Headers',
+    'Content-Type, Authorization, X-Requested-With, x-clinic-id, Accept, X-Auth-Token'
+  );
+  res.header('Access-Control-Expose-Headers', 'set-cookie,Authorization');
 
-app.use(cors(corsOptions));
+  if (req.method === 'OPTIONS') {
+    return res.status(204).send();
+  }
+  next();
+});
 
 
 
