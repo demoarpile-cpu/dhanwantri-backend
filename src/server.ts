@@ -1,10 +1,12 @@
 import dotenv from 'dotenv';
-// Only load from .env if it exists and we're not explicitly told not to.
-// Do NOT delete DATABASE_URL in production!
-if (process.env.NODE_ENV !== 'production') {
+// On Railway, always use dashboard env vars (do not load local .env from repo).
+const isRailway = Boolean(
+  process.env.RAILWAY_ENVIRONMENT_NAME ||
+  process.env.RAILWAY_PROJECT_ID ||
+  process.env.RAILWAY_SERVICE_ID
+);
+if (!isRailway) {
   dotenv.config({ override: true });
-} else {
-  dotenv.config(); // Still load any other potential envs
 }
 
 import express, { Request, Response, NextFunction } from 'express';
