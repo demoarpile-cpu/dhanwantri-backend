@@ -9,12 +9,11 @@ export const sendEmail = async (to: string, subject: string, html: string) => {
             return acc;
         }, {});
 
-        // Prefer .env over DB values to avoid stale SMTP credentials from settings table.
-        const smtpHost = (process.env.SMTP_HOST || config.SMTP_HOST || '').trim();
-        const smtpPort = Number(process.env.SMTP_PORT || config.SMTP_PORT) || 587;
-        const smtpSecure = String(process.env.SMTP_SECURE || config.SMTP_SECURE || 'false') === 'true';
-        const smtpUser = (process.env.SMTP_USER || config.SMTP_USER || '').trim();
-        const smtpPass = String(process.env.SMTP_PASS || config.SMTP_PASS || '').trim();
+        const smtpHost = config.SMTP_HOST || process.env.SMTP_HOST;
+        const smtpPort = Number(config.SMTP_PORT) || Number(process.env.SMTP_PORT) || 587;
+        const smtpSecure = String(config.SMTP_SECURE || process.env.SMTP_SECURE || 'false') === 'true';
+        const smtpUser = config.SMTP_USER || process.env.SMTP_USER;
+        const smtpPass = config.SMTP_PASS || process.env.SMTP_PASS;
 
         // Dummy mode: if SMTP details are missing, don't send external mail.
         // OTP will still be available through frontend demo display.
@@ -35,10 +34,7 @@ export const sendEmail = async (to: string, subject: string, html: string) => {
             }
         });
 
-        // For Gmail SMTP, MAIL FROM should match authenticated user to avoid envelope errors.
-        const fromAddress = smtpUser
-            ? `"Dhanvantri Hospital" <${smtpUser}>`
-            : `"Dhanvantri Hospital" <no-reply@dhanvantri.local>`;
+        const fromAddress = config.SMTP_FROM || process.env.SMTP_FROM || '"Dhanvantri Hospital" <no-reply@dhanvantri.local>';
 
 
         const mailOptions = {

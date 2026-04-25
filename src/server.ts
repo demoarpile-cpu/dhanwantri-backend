@@ -138,7 +138,7 @@ app.use('/api/medical-reports', medicalReportRoutes);
 app.get('/health', (_req: Request, res: Response) => {
   res.status(200).json({
     success: true,
-    message: 'Dhanvantri HIS API is fully operational 🚀'
+    message: 'Exclusive Vision HIS API is fully operational 🚀'
   });
 });
 
