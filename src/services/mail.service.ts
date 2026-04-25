@@ -71,6 +71,9 @@ export const sendEmail = async (to: string, subject: string, html: string) => {
                 host: smtpHost,
                 port: smtpPort,
                 secure: smtpSecure,
+                connectionTimeout: 8000,
+                greetingTimeout: 8000,
+                socketTimeout: 10000,
                 auth: {
                     user: smtpUser,
                     pass: smtpPass

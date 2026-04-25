@@ -71,12 +71,22 @@ app.use(compression());
 
 
 const isProd = process.env.NODE_ENV === 'production';
+const allowedOrigins = [
+  process.env.FRONTEND_URL,
+  'https://dhnawantrai-backedn.softwaredemolive.live',
+  'https://dhanwantri-backedn.softwaredemolive.live',
+  'http://localhost:5173',
+  'http://localhost:3000'
+].filter(Boolean) as string[];
 
 app.use(
   cors({
-    origin: isProd
-      ? 'https://dhnawantrai-backedn.softwaredemolive.live' // 👉 replace with your frontend URL
-      : true, // allow all in development
+    origin: (origin, callback) => {
+      if (!origin) return callback(null, true);
+      if (!isProd) return callback(null, true);
+      if (allowedOrigins.includes(origin)) return callback(null, true);
+      return callback(new Error(`CORS blocked for origin: ${origin}`));
+    },
     credentials: true,
     methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
     allowedHeaders: [

@@ -22,6 +22,13 @@ const OTP_TRUST_HOURS = 12;
 const OTP_EXPIRE_SECONDS = 60;
 const isOtpInlineDebug = String(process.env.OTP_INLINE_DEBUG || 'false') === 'true';
 
+const queueOtpEmail = (email: string, otp: string) => {
+    // Do not block login response on SMTP/network latency.
+    void sendOTP(email, otp).catch((error) => {
+        console.error(`[OTP] Failed to send OTP email to ${email}:`, error);
+    });
+};
+
 const verifyTrustedOtpToken = (token: string | undefined, userId: number) => {
     if (!token)
         return false;
@@ -261,11 +268,7 @@ export const login = async (data: any, ip: string, device: string) => {
             where: { id: user.id },
             data: { otp: generatedOtp, otpExpiry }
         });
-        try {
-            await sendOTP(user.email, generatedOtp);
-        } catch (e) {
-            // Keep login flow resilient even if SMTP is not configured.
-        }
+        queueOtpEmail(user.email, generatedOtp);
 
         return {
             success: true,
@@ -340,11 +343,7 @@ export const login = async (data: any, ip: string, device: string) => {
         where: { id: user.id },
         data: { otp: generatedOtp, otpExpiry }
     });
-    try {
-        await sendOTP(user.email, generatedOtp);
-    } catch (e) {
-        // Keep login flow resilient even if SMTP is not configured.
-    }
+    queueOtpEmail(user.email, generatedOtp);
 
     // Determine the primary role for the token
     let tokenRole = user.role;
@@ -449,11 +448,7 @@ export const resendOTP = async (data: any) => {
         data: { otp: generatedOtp, otpExpiry }
     });
 
-    try {
-        await sendOTP(user.email, generatedOtp);
-    } catch (e) {
-        // Keep resend flow resilient if SMTP is not configured/reachable.
-    }
+    queueOtpEmail(user.email, generatedOtp);
 
     return {
         success: true,
