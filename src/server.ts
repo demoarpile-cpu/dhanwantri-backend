@@ -75,7 +75,7 @@ const isProd = process.env.NODE_ENV === 'production';
 app.use(
   cors({
     origin: isProd
-      ? 'https://ev-clinic.wenbear.online' // 👉 replace with your frontend URL
+      ? 'https://dhnawantrai-backedn.softwaredemolive.live' // 👉 replace with your frontend URL
       : true, // allow all in development
     credentials: true,
     methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
@@ -99,7 +99,7 @@ app.use(express.urlencoded({ extended: true }));
 app.get('/health', (_req: Request, res: Response) => {
   res.status(200).json({
     success: true,
-    message: 'Exclusive Vision HIS API is fully operational 🚀'
+    message: 'Dhanvantri HIS API is fully operational 🚀'
   });
 });
 
