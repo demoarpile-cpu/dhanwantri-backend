@@ -81,27 +81,42 @@ const allowedOrigins = [
   'http://localhost:3000'
 ].filter(Boolean) as string[];
 
-app.use(
-  cors({
-    origin: (origin, callback) => {
-      if (!origin) return callback(null, true);
-      if (!isProd) return callback(null, true);
-      if (allowedOrigins.includes(origin)) return callback(null, true);
-      return callback(new Error(`CORS blocked for origin: ${origin}`));
-    },
-    credentials: true,
-    methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
-    allowedHeaders: [
-      "Content-Type",
-      "Authorization",
-      "X-Requested-With",
-      "x-clinic-id",
-      "Accept",
-      "X-Auth-Token"
-    ],
-    exposedHeaders: ["set-cookie", "Authorization"]
-  })
-);
+const corsOptions: cors.CorsOptions = {
+  origin: (origin, callback) => {
+    // Non-browser/server-side requests
+    if (!origin) return callback(null, true);
+
+    // Development: allow all
+    if (!isProd) return callback(null, true);
+
+    // Production: allow configured + softwaredemolive + railway frontend hosts
+    const isExplicitAllowed = allowedOrigins.includes(origin);
+    const isSoftwareDemoLive = /\.softwaredemolive\.live$/i.test(new URL(origin).hostname);
+    const isRailwayDomain = /\.railway\.app$/i.test(new URL(origin).hostname);
+
+    if (isExplicitAllowed || isSoftwareDemoLive || isRailwayDomain) {
+      return callback(null, true);
+    }
+
+    // Do not throw hard error; return false to avoid breaking non-critical clients.
+    console.warn(`[CORS] Blocked origin: ${origin}`);
+    return callback(null, false);
+  },
+  credentials: true,
+  methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
+  allowedHeaders: [
+    "Content-Type",
+    "Authorization",
+    "X-Requested-With",
+    "x-clinic-id",
+    "Accept",
+    "X-Auth-Token"
+  ],
+  exposedHeaders: ["set-cookie", "Authorization"]
+};
+
+app.use(cors(corsOptions));
+app.options('*', cors(corsOptions));
 
 
 
