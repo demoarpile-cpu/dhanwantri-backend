@@ -72,36 +72,10 @@ app.use(compression());
 
 
 
-const isProd = process.env.NODE_ENV === 'production';
-const allowedOrigins = [
-  process.env.FRONTEND_URL,
-  'https://dhnawantrai-backedn.softwaredemolive.live',
-  'https://dhanwantri-backedn.softwaredemolive.live',
-  'http://localhost:5173',
-  'http://localhost:3000'
-].filter(Boolean) as string[];
-
 const corsOptions: cors.CorsOptions = {
-  origin: (origin, callback) => {
-    // Non-browser/server-side requests
-    if (!origin) return callback(null, true);
-
-    // Development: allow all
-    if (!isProd) return callback(null, true);
-
-    // Production: allow configured + softwaredemolive + railway frontend hosts
-    const isExplicitAllowed = allowedOrigins.includes(origin);
-    const isSoftwareDemoLive = /\.softwaredemolive\.live$/i.test(new URL(origin).hostname);
-    const isRailwayDomain = /\.railway\.app$/i.test(new URL(origin).hostname);
-
-    if (isExplicitAllowed || isSoftwareDemoLive || isRailwayDomain) {
-      return callback(null, true);
-    }
-
-    // Do not throw hard error; return false to avoid breaking non-critical clients.
-    console.warn(`[CORS] Blocked origin: ${origin}`);
-    return callback(null, false);
-  },
+  // Reflect request origin to avoid browser-side CORS blocks across
+  // localhost, softwaredemolive and railway domains.
+  origin: true,
   credentials: true,
   methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
   allowedHeaders: [
