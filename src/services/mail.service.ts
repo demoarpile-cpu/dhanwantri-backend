@@ -1,20 +1,61 @@
 import nodemailer from 'nodemailer';
 import { prisma } from '../lib/prisma.js';
 
+let cachedSmtpConfig: any = null;
+let cachedTransporter: any = null;
+let smtpCacheAt = 0;
+const SMTP_CACHE_TTL_MS = 5 * 60 * 1000;
+
+const getSmtpConfig = async () => {
+    const now = Date.now();
+    if (cachedSmtpConfig && now - smtpCacheAt < SMTP_CACHE_TTL_MS) {
+        return cachedSmtpConfig;
+    }
+
+    const envHost = (process.env.SMTP_HOST || '').trim();
+    const envUser = (process.env.SMTP_USER || '').trim();
+    const envPass = String(process.env.SMTP_PASS || '').trim();
+    const envPort = Number(process.env.SMTP_PORT) || 587;
+    const envSecure = String(process.env.SMTP_SECURE || 'false') === 'true';
+
+    // Fast path: env SMTP values available, skip DB read.
+    if (envHost && envUser && envPass) {
+        cachedSmtpConfig = {
+            host: envHost,
+            port: envPort,
+            secure: envSecure,
+            user: envUser,
+            pass: envPass
+        };
+        smtpCacheAt = now;
+        return cachedSmtpConfig;
+    }
+
+    const settings = await prisma.system_settings.findMany();
+    const config = settings.reduce((acc: any, s) => {
+        acc[s.key] = s.value;
+        return acc;
+    }, {});
+
+    cachedSmtpConfig = {
+        host: (process.env.SMTP_HOST || config.SMTP_HOST || '').trim(),
+        port: Number(process.env.SMTP_PORT || config.SMTP_PORT) || 587,
+        secure: String(process.env.SMTP_SECURE || config.SMTP_SECURE || 'false') === 'true',
+        user: (process.env.SMTP_USER || config.SMTP_USER || '').trim(),
+        pass: String(process.env.SMTP_PASS || config.SMTP_PASS || '').trim()
+    };
+    smtpCacheAt = now;
+    return cachedSmtpConfig;
+};
+
 export const sendEmail = async (to: string, subject: string, html: string) => {
     try {
-        const settings = await prisma.system_settings.findMany();
-        const config = settings.reduce((acc: any, s) => {
-            acc[s.key] = s.value;
-            return acc;
-        }, {});
-
-        // Prefer .env over DB values to avoid stale SMTP credentials from settings table.
-        const smtpHost = (process.env.SMTP_HOST || config.SMTP_HOST || '').trim();
-        const smtpPort = Number(process.env.SMTP_PORT || config.SMTP_PORT) || 587;
-        const smtpSecure = String(process.env.SMTP_SECURE || config.SMTP_SECURE || 'false') === 'true';
-        const smtpUser = (process.env.SMTP_USER || config.SMTP_USER || '').trim();
-        const smtpPass = String(process.env.SMTP_PASS || config.SMTP_PASS || '').trim();
+        const smtpConfig = await getSmtpConfig();
+        const smtpHost = smtpConfig.host;
+        const smtpPort = smtpConfig.port;
+        const smtpSecure = smtpConfig.secure;
+        const smtpUser = smtpConfig.user;
+        const smtpPass = smtpConfig.pass;
 
         // Dummy mode: if SMTP details are missing, don't send external mail.
         // OTP will still be available through frontend demo display.
@@ -25,15 +66,20 @@ export const sendEmail = async (to: string, subject: string, html: string) => {
             return { success: false, skipped: true };
         }
 
-        const transporter = nodemailer.createTransport({
-            host: smtpHost,
-            port: smtpPort,
-            secure: smtpSecure,
-            auth: {
-                user: smtpUser,
-                pass: smtpPass
-            }
-        });
+        if (!cachedTransporter || cachedTransporter.__smtpKey !== `${smtpHost}:${smtpPort}:${smtpUser}`) {
+            cachedTransporter = nodemailer.createTransport({
+                host: smtpHost,
+                port: smtpPort,
+                secure: smtpSecure,
+                auth: {
+                    user: smtpUser,
+                    pass: smtpPass
+                }
+            });
+            cachedTransporter.__smtpKey = `${smtpHost}:${smtpPort}:${smtpUser}`;
+        }
+
+        const transporter = cachedTransporter;
 
         // For Gmail SMTP, MAIL FROM should match authenticated user to avoid envelope errors.
         const fromAddress = smtpUser
@@ -52,6 +98,7 @@ export const sendEmail = async (to: string, subject: string, html: string) => {
         console.log(`Email sent: ${result.messageId}`);
         return result;
     } catch (error) {
+        cachedTransporter = null;
         console.error('Email send error:', error);
         // In local development, we might not have valid SMTP, so we log the OTP instead
         console.log('--- FALLBACK: EMAIL NOT SENT but LOGGING CONTENT ---');
@@ -73,7 +120,7 @@ export const sendOTP = async (email: string, otp: string) => {
             <div style="background: #F8FAFC; padding: 30px; border-radius: 10px; text-align: center;">
                 <p style="font-size: 16px; color: #1E293B;">Your Two-Step Verification Code is:</p>
                 <h1 style="font-size: 36px; color: #2D3BAE; letter-spacing: 5px; margin: 20px 0;">${otp}</h1>
-                <p style="font-size: 14px; color: #64748B;">This code will expire in 10 minutes. Do not share this code with anyone.</p>
+                <p style="font-size: 14px; color: #64748B;">This code will expire in 1 minute. Do not share this code with anyone.</p>
             </div>
             <div style="margin-top: 30px; text-align: center; font-size: 12px; color: #94A3B8;">
                 <p>© ${new Date().getFullYear()} Dhanvantri Hospital. All rights reserved.</p>

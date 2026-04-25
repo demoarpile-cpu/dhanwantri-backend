@@ -229,3 +229,73 @@ export const rejectRegistration = asyncHandler(async (req: Request, res: Respons
 
     res.status(200).json({ success: true, message: 'Registration rejected' });
 });
+
+export const updateRegistration = asyncHandler(async (req: Request, res: Response) => {
+    const { id } = req.params;
+    const { firstName, lastName, email, address, planId } = req.body;
+
+    const registration = await prisma.registration_request.findUnique({
+        where: { id: Number(id) }
+    });
+
+    if (!registration) {
+        throw new AppError('Registration request not found', 404);
+    }
+
+    if (registration.status !== 'PENDING') {
+        throw new AppError('Only PENDING registrations can be updated', 400);
+    }
+
+    const normalizedEmail = String(email || '').trim().toLowerCase();
+    if (!normalizedEmail) {
+        throw new AppError('Email is required', 400);
+    }
+
+    const duplicateRegistration = await prisma.registration_request.findFirst({
+        where: {
+            email: normalizedEmail,
+            id: { not: Number(id) }
+        }
+    });
+    if (duplicateRegistration) {
+        throw new AppError('Another registration already exists with this email', 400);
+    }
+
+    const existingUser = await prisma.user.findUnique({
+        where: { email: normalizedEmail }
+    });
+    if (existingUser) {
+        throw new AppError('This email is already used by an existing account', 400);
+    }
+
+    const updated = await prisma.registration_request.update({
+        where: { id: Number(id) },
+        data: {
+            firstName: String(firstName || '').trim(),
+            lastName: String(lastName || '').trim(),
+            email: normalizedEmail,
+            address: String(address || '').trim(),
+            planId: planId ? Number(planId) : null
+        },
+        include: { plan: true }
+    });
+
+    res.status(200).json({ success: true, message: 'Registration updated successfully', data: updated });
+});
+
+export const deleteRegistration = asyncHandler(async (req: Request, res: Response) => {
+    const { id } = req.params;
+
+    const registration = await prisma.registration_request.findUnique({
+        where: { id: Number(id) }
+    });
+    if (!registration) {
+        throw new AppError('Registration request not found', 404);
+    }
+
+    await prisma.registration_request.delete({
+        where: { id: Number(id) }
+    });
+
+    res.status(200).json({ success: true, message: 'Registration deleted successfully' });
+});

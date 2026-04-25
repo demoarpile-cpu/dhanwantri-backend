@@ -64,5 +64,7 @@ router.delete('/plans/:id', saasController.deletePlan);
 router.get('/registrations', saasController.getRegistrations);
 router.post('/registrations/:id/approve', saasController.approveRegistration);
 router.post('/registrations/:id/reject', saasController.rejectRegistration);
+router.patch('/registrations/:id', saasController.updateRegistration);
+router.delete('/registrations/:id', saasController.deleteRegistration);
 
 export default router;

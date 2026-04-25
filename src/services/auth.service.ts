@@ -19,6 +19,7 @@ const signToken = (payload: object, expires: any = '1h') => {
 import { sendOTP } from './mail.service.js';
 
 const OTP_TRUST_HOURS = 12;
+const OTP_EXPIRE_SECONDS = 60;
 const isOtpInlineDebug = String(process.env.OTP_INLINE_DEBUG || 'false') === 'true';
 
 const verifyTrustedOtpToken = (token: string | undefined, userId: number) => {
@@ -255,7 +256,7 @@ export const login = async (data: any, ip: string, device: string) => {
         }
 
         const generatedOtp = String(Math.floor(100000 + Math.random() * 900000));
-        const otpExpiry = new Date(Date.now() + 10 * 60 * 1000);
+        const otpExpiry = new Date(Date.now() + OTP_EXPIRE_SECONDS * 1000);
         await prisma.user.update({
             where: { id: user.id },
             data: { otp: generatedOtp, otpExpiry }
@@ -334,7 +335,7 @@ export const login = async (data: any, ip: string, device: string) => {
 
     // Create OTP session (for UI flow). For now, verification accepts any 6-digit OTP.
     const generatedOtp = String(Math.floor(100000 + Math.random() * 900000));
-    const otpExpiry = new Date(Date.now() + 10 * 60 * 1000);
+    const otpExpiry = new Date(Date.now() + OTP_EXPIRE_SECONDS * 1000);
     await prisma.user.update({
         where: { id: user.id },
         data: { otp: generatedOtp, otpExpiry }
@@ -442,7 +443,7 @@ export const resendOTP = async (data: any) => {
     }
 
     const generatedOtp = String(Math.floor(100000 + Math.random() * 900000));
-    const otpExpiry = new Date(Date.now() + 10 * 60 * 1000);
+    const otpExpiry = new Date(Date.now() + OTP_EXPIRE_SECONDS * 1000);
     await prisma.user.update({
         where: { id: user.id },
         data: { otp: generatedOtp, otpExpiry }
