@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "npm run build && nodemon dist/server.js",
-    "build": "tsc",
+    "build": "node ./node_modules/typescript/bin/tsc",
     "start": "node dist/server.js",
     "prisma:generate": "prisma generate",
     "prisma:migrate": "prisma migrate deploy",
